@@ -1,6 +1,6 @@
 var config = {
 	channels: ["#common"],
-	server: "138.49.184.174",
+	server: "localhost",
 	botName: "CoolBot"
 };
 
