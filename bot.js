@@ -1,7 +1,6 @@
 var config = {
 	channels: ["#common"],
-	//server: "138.49.184.174",
-	server: "localhost",
+	server: "138.49.184.174",
 	botName: "CoolBot"
 };
 
@@ -25,7 +24,7 @@ bot.addListener("registered", function(message) {
 
 bot.addListener("join", function(channel, who) {
 	console.log("join " + who);
-	bot.say(channel, who + " is here");
+	bot.say(channel, who + " has joined your party");
 
 });
 
@@ -36,12 +35,16 @@ bot.addListener('message#common', function (from, message, who) {
 	// ignore unnecessary capitalization and spacing for ease of use 
 	message = message.replace(/\s/g,'').toLowerCase();
 
-	// Have the bot say hi
-	if (message.localeCompare("coolbothey") == 0) {
-		console.log("Saying hi");
-		bot.say('#common', "hey hey");
+	// List commands this bot will respond to
+	if ((message.localeCompare("coolbothey") == 0) || (message.localeCompare("coolbothi") == 0) || (message.localeCompare("coolbothello") == 0)) {
+		console.log("Displaying bot command list...");
+		bot.say('#common', "Hi there, here are some commands I respond to...\n");
+		bot.say('#common', "'Hi'/'Hey'/'Hello': List the commands I respond to. Looks like you've found this command already\n");
+		bot.say('#common', "'Time'/'Date': Display the current date and time\n");
+		bot.say('#common', "'Roll [Number]': Roll a random number between 1 and [Number]. Please note that an integer must be entered after 'Roll'\n");
+		bot.say('#common', "'cat': Draw a multiline ASCII cat. Let's not spam this\n");
+		bot.say('#common', "'dog': Draw a multiline ASCII dog. Let's not spam this\n");
 	}
-
 	// Display the date and time
 	else if ((message.localeCompare("coolbottime") == 0) || (message.localeCompare("coolbotdate") == 0)) {
 		console.log("Displaying the time...");
